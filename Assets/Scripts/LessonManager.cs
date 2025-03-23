@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class LessonManager : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class LessonManager : MonoBehaviour
 
     private void Start()
     {
+        if (SceneData.currentLesson != 0) currentLesson = SceneData.currentLesson;
+
         LoadLesson(currentLesson);
     }
     
@@ -58,6 +61,11 @@ public class LessonManager : MonoBehaviour
         {
             CheckLessonTwoComplete(input);
         }
+    }
+
+    public void BackToPath()
+    {
+        SceneManager.LoadScene("LessonPathScene");
     }
 
     // Überprüfe, ob Lesson 1 geschafft wurde
